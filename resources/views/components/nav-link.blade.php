@@ -1,0 +1,1 @@
+<a {{$attributes->merge(['class'=>"block py-[22px] px-[16px] hover:text-white hover:bg-apple_color_hover"])}}>{{$slot}}</a>
