@@ -1,11 +1,12 @@
-<div class="mt-10 text-center">
-    <h1 class="pb-6 font-bold text-[30px]">iPhone</h1>
+@props(['name','products'])
 
-    <div class="grid grid-cols-4 gap-5">
-        <x-products.card />
-        <x-products.card />
-        <x-products.card />
-        <x-products.card />
+<div class="mt-10 text-center">
+    <h1 class="pb-6 font-bold text-[30px]">{{$name}}</h1>
+
+    <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-5">    
+        @foreach ($products->take(4) as $product)
+            <x-products.card :product="$product"/>
+        @endforeach
     </div>
 
     <div class="mt-8">
