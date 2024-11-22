@@ -2,7 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\category;
+use App\Models\categories;
+use App\Models\subcategories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,7 +22,8 @@ class ProductsFactory extends Factory
             'name' => fake()->name(),
             'actual_price' => fake()->numberBetween(10000000, 30000000),
             'old_price' => fake()->numberBetween(10000000, 30000000),
-            'category_id' => category::factory(),
+            'categories_id' => categories::factory(),
+            'subcategories_id' => subcategories::factory(),
         ];
     }
 }

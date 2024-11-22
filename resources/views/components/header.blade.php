@@ -11,11 +11,11 @@
             </div>
             {{-- nav_link --}}
             <div class="lg:flex flex-1 xl:gap-4 gap-0 lg:order-2 order-none hidden justify-center items-center">
-                <x-nav-link href="/iphone">iPhone</x-nav-link>
-                <x-nav-link href="/">iPad</x-nav-link>
-                <x-nav-link href="/">Mac</x-nav-link>
-                <x-nav-link href="/">Watch</x-nav-link>
-                <x-nav-link href="/">Tin tức</x-nav-link>
+                <x-nav-link href="/iPhone">iPhone</x-nav-link>
+                <x-nav-link href="/iPad">iPad</x-nav-link>
+                <x-nav-link href="/Mac">Mac</x-nav-link>
+                <x-nav-link href="/Watch">Watch</x-nav-link>
+                <x-nav-link href="/news">Tin tức</x-nav-link>
             </div>
             {{-- icons --}}
             <div class="lg:order-3 order-4 flex items-center lg:gap-4 md:gap-10 gap-4 lg:px-0 md:px-6 px-2">
