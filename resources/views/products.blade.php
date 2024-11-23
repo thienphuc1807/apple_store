@@ -1,5 +1,13 @@
+@if ($category)
+    @section('title',$category->name)
+@else
+    @section('title',$subcategory->name)
+@endif
 <x-layout>
-    <x-breadcrumb/>
+    <x-breadcrumb 
+    :category="$category ? $category->name : $subcategory->name" 
+    :categoryName="$categoryName"    
+    />
       <div class="max-w-[1200px] mx-auto">
             <h1 class="text-center text-[36px] font-bold leading-[54px] pt-4 pb-2">{{$category ? $category['name'] : $subcategory['name']}}</h1>
             @if ($category)
@@ -14,8 +22,9 @@
                          [&::-webkit-scrollbar-thumb]:bg-gray-300
                          dark:[&::-webkit-scrollbar-track]:bg-neutral-200
                          dark:[&::-webkit-scrollbar-thumb]:bg-gray-300 w-[80%]">
+                    <x-products.category-box :subcategory="$category->name" :active="true"/>
                      @foreach ($subcategories as $subcategory)
-                         <x-products.category-box :subcategory="$subcategory"/>
+                         <x-products.category-box :subcategory="$subcategory->name"/>
                      @endforeach
                      
  

@@ -6,7 +6,7 @@
             {{-- Logo --}}
             <div class="lg:order-1 order-3 lg:flex-none flex-1 text-center">
                 <a href="/" class="inline-block">
-                    <img src={{ Vite::asset("resources/images/logo-shopdunk.png")}} alt="Apple_logo" class="w-full md:h-12 h-11 lg:pt-0 pt-1 object-contain">
+                    <img src={{ Vite::asset("resources/images/logo.png")}} alt="Apple_logo" class="w-full md:h-12 h-11 lg:pt-0 pt-1 object-contain">
                 </a>
             </div>
             {{-- nav_link --}}

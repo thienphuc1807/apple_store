@@ -15,13 +15,16 @@ Route::get('/', function () {
 Route::get('/{name}', function ($name) {
     $category = categories::where('name', $name)->first();
     $subcategory = subcategories::where('name', $name)->first();
+
+    $categoryName = '';
     $subcategories = [];
     if ($category) {
         $subcategories = subcategories::where('categories_id', $category->id)->get();
         $products = products::where('categories_id', $category->id)->get();
     } else {
+        $categoryName = categories::find($subcategory->categories_id);
         $products = products::where('subcategories_id', $subcategory->id)->get();
     }
-    return view('products', ['products' => $products, 'category' => $category, 'subcategories' => $subcategories, 'subcategory' => $subcategory]);
+    return view('products', ['products' => $products, 'category' => $category, 'subcategories' => $subcategories, 'subcategory' => $subcategory, 'categoryName' => $categoryName]);
     // dd($name);
 });
