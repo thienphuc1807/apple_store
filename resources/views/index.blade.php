@@ -3,7 +3,7 @@
     <div class="max-w-[1200px] xl:mx-auto xl:px-0 px-5">
             <div class="lg:mt-20 mt-10">
                 @foreach ($categories as $category)    
-                    <x-products.section :name="$category->name" :products="$category->products"/>
+                    <x-section :name="$category->name" :products="$category->products"/>
                 @endforeach
             </div>
             <div class="mt-20">

@@ -10,10 +10,10 @@
 </head>
 <body class="font-['Arial'] text-[14px] font-normal bg-[#f5f5f7]">
     <x-header />
-    <div class="lg:hidden block"><x-products.category-mobile /></div>
-    <main>
-      <div>{{$slot}}</div>
-    </main>
+    <div class="lg:hidden block"><x-category-mobile /></div>
+    <section>
+      {{$slot}}
+    </section>
     <x-footer />
 </body>
 </html>

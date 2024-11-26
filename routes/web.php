@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LoginUserController;
+use App\Http\Controllers\RegisterUserController;
 use App\Models\categories;
 use App\Models\products;
 use App\Models\subcategories;
@@ -21,10 +23,31 @@ Route::get('/{name}', function ($name) {
     if ($category) {
         $subcategories = subcategories::where('categories_id', $category->id)->get();
         $products = products::where('categories_id', $category->id)->get();
-    } else {
+    } elseif ($subcategory) {
         $categoryName = categories::find($subcategory->categories_id);
         $products = products::where('subcategories_id', $subcategory->id)->get();
+    } else {
+        $products = "";
     }
-    return view('products', ['products' => $products, 'category' => $category, 'subcategories' => $subcategories, 'subcategory' => $subcategory, 'categoryName' => $categoryName]);
+    return view(
+        'products',
+        [
+            'products' => $products,
+            'category' => $category,
+            'subcategories' => $subcategories,
+            'subcategory' => $subcategory,
+            'categoryName' => $categoryName
+        ]
+    );
     // dd($name);
 });
+
+
+Route::middleware('guest')->group(function () {
+    Route::get('/user/register', [RegisterUserController::class, 'create']);
+    Route::post('/user/register', [RegisterUserController::class, 'store']);
+    Route::get('/user/login', [LoginUserController::class, 'create']);
+    Route::post('/user/login', [LoginUserController::class, 'store']);
+});
+
+Route::delete('/user/logout', [LoginUserController::class, 'destroy']);

@@ -1,4 +1,4 @@
-@props(['category', 'categoryName' => ''])
+@props(['category' => '', 'categoryName' => ''])
 <div class="bg-white py-2 px-[10px]">
     <div class="max-w-[1200px] mx-auto">
         <ul class="text-apple_backgroundColor flex">

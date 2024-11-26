@@ -1,9 +1,12 @@
 @if ($category)
     @section('title',$category->name)
-@else
+@elseif($subcategory)
     @section('title',$subcategory->name)
+@else
+    
 @endif
 <x-layout>
+    @if($category || $subcategory)
     <x-breadcrumb 
     :category="$category ? $category->name : $subcategory->name" 
     :categoryName="$categoryName"    
@@ -22,9 +25,9 @@
                          [&::-webkit-scrollbar-thumb]:bg-gray-300
                          dark:[&::-webkit-scrollbar-track]:bg-neutral-200
                          dark:[&::-webkit-scrollbar-thumb]:bg-gray-300 w-[80%]">
-                    <x-products.category-box :subcategory="$category->name" :active="true"/>
+                    <x-category-box :subcategory="$category->name" :active="true"/>
                      @foreach ($subcategories as $subcategory)
-                         <x-products.category-box :subcategory="$subcategory->name"/>
+                         <x-category-box :subcategory="$subcategory->name"/>
                      @endforeach
                      
  
@@ -39,8 +42,12 @@
             @endif
             <div class="grid lg:grid-cols-4 grid-cols-3 gap-5">
                 @foreach ($products as $product)   
-                    <x-products.card :product="$product"/>
+                    <x-card :product="$product"/>
                 @endforeach
             </div>
+
+            @else
+                <h1>No item found!</h1>
+            @endif
       </div>
 </x-layout>

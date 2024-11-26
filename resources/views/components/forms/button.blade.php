@@ -1,0 +1,1 @@
+<button {{$attributes(['class' => "w-full bg-actual_price rounded-lg text-white text-center min-h-12 my-6"])}}>{{$slot}}</button>

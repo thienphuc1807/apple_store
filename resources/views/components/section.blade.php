@@ -5,7 +5,7 @@
 
     <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-5">    
         @foreach ($products->take(4) as $product)
-            <x-products.card :product="$product"/>
+            <x-card :product="$product"/>
         @endforeach
     </div>
 
