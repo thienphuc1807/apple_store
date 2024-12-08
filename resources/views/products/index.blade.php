@@ -1,19 +1,17 @@
-@if ($category)
+@if (isset($category))
     @section('title',$category->name)
-@elseif($subcategory)
+@elseif (isset($subcategory))
     @section('title',$subcategory->name)
-@else
-    
 @endif
 <x-layout>
-    @if($category || $subcategory)
-    <x-breadcrumb 
-    :category="$category ? $category->name : $subcategory->name" 
-    :categoryName="$categoryName"    
-    />
-      <div class="max-w-[1200px] mx-auto">
-            <h1 class="text-center text-[36px] font-bold leading-[54px] pt-4 pb-2">{{$category ? $category['name'] : $subcategory['name']}}</h1>
-            @if ($category)
+    @if(isset($category) || isset($subcategory))
+        <x-breadcrumb 
+            :category="isset($category) ? $category->name : $subcategory->name" 
+            :parentCategory="$parentCategory ?? null"
+        />
+        <div class="max-w-[1200px] mx-auto">
+            <h1 class="text-center text-[36px] font-bold leading-[54px] pt-4 pb-2">{{isset($category) ? $category['name'] : $subcategory['name']}}</h1>
+            @if (isset($category))
             <div class="mb-[30px]"><x-slider></x-slider></div>
             <div class="flex justify-between mb-5">
                 <div class="flex overflow-auto  
@@ -24,10 +22,9 @@
                          [&::-webkit-scrollbar-thumb]:rounded-full
                          [&::-webkit-scrollbar-thumb]:bg-gray-300
                          dark:[&::-webkit-scrollbar-track]:bg-neutral-200
-                         dark:[&::-webkit-scrollbar-thumb]:bg-gray-300 w-[80%]">
-                    <x-category-box :subcategory="$category->name" :active="true"/>
+                         dark:[&::-webkit-scrollbar-thumb]:bg-gray-300 w-[80%]">    
                      @foreach ($subcategories as $subcategory)
-                         <x-category-box :subcategory="$subcategory->name"/>
+                         <x-category-box :subcategory="$subcategory"/>
                      @endforeach
                      
  
@@ -40,14 +37,15 @@
                 </div>
              </div>
             @endif
-            <div class="grid lg:grid-cols-4 grid-cols-3 gap-5">
-                @foreach ($products as $product)   
-                    <x-card :product="$product"/>
-                @endforeach
-            </div>
-
-            @else
-                <h1>No item found!</h1>
-            @endif
-      </div>
+        <div class="grid lg:grid-cols-4 grid-cols-3 gap-5">
+            @foreach ($products as $product)   
+                <x-card :product="$product"/>
+            @endforeach
+        </div>
+    @else
+    <div class="max-w-[1200px] min-h-[600px] mx-auto flex flex-col justify-center items-center">
+        <img src={{Vite::asset("resources/images/item_not_found.png")}} alt="Item not found image">
+        <h1>No item found!</h1>
+    </div>
+    @endif
 </x-layout>

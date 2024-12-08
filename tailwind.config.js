@@ -18,6 +18,7 @@ export default {
                 old_price: "#86868B",
                 apple_backgroundColor: "#515154",
                 apple_color_hover: "#626265",
+                border: "#EBEBEB",
             },
             fontFamily: {
                 sans: ["Figtree", ...defaultTheme.fontFamily.sans],

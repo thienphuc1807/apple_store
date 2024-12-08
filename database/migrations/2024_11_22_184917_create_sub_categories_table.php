@@ -13,9 +13,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('subcategories', function (Blueprint $table) {
-            $table->id();
+            $table->id()->unique();
             $table->foreignIdFor(categories::class);
-            $table->string('name');
+            $table->string('name')->unique();
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

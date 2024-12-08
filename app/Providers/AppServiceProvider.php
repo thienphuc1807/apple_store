@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\categories;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +22,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        View::share("categories", categories::all());
+        View::share('cart', session()->get('cart', []));
+        Log::info(session()->get('cart'));
     }
 }

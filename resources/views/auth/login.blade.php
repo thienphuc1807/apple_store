@@ -20,7 +20,7 @@
                 </div>
             
                 <x-forms.button>Đăng nhập</x-forms.button>
-                <p>Bạn chưa có tài khoản? <a href="" class="ml-2 text-actual_price">Tạo tài khoản ngay</a></p>
+                <p>Bạn chưa có tài khoản? <a href="/user/register" class="ml-2 text-actual_price">Tạo tài khoản ngay</a></p>
             </x-forms.form>
         </div>
     </div>
