@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\LoginUserController;
+use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ProductsUserController;
 use App\Http\Controllers\RegisterUserController;
 use App\Models\categories;
@@ -22,8 +23,12 @@ Route::middleware('guest')->group(function () {
 });
 Route::delete('/logout', [LoginUserController::class, 'destroy']);
 
+Route::get('/user/orders', [OrdersController::class, 'index']);
+Route::post('/user/orders', [OrdersController::class, 'store']);
 
-Route::get('/user/cart', [CartController::class, 'index']);
-Route::patch('/updatequantity/{key}', [CartController::class, 'updateQuantity']);
-Route::post('/addcart', [CartController::class, 'add']);
-Route::post('/removecart/{key}', [CartController::class, 'delete']);
+Route::controller(CartController::class)->group(function () {
+    Route::get('/user/cart', 'index');
+    Route::post('/addcart', 'add');
+    Route::patch('/updatequantity/{key}', 'updateQuantity');
+    Route::delete('/removecart/{key}', 'delete');
+});

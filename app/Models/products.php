@@ -17,4 +17,9 @@ class products extends Model
     {
         return $this->belongsTo(subcategories::class);
     }
+
+    public function orderItems()
+    {
+        return $this->hasMany(orderitems::class);
+    }
 }

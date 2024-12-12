@@ -7,16 +7,22 @@
     </style>
     <div class="md:max-w-[600px] w-full mx-auto min-h-screen">
         @if (!empty($cart) && count($cart) > 0)
-        
         <div class="flex py-2 md:px-0 px-4 justify-between">
             <a href="/">< Về trang chủ</a>
             <h1 class="md:block hidden">Giỏ hàng của bạn</h1>
         </div>
-
-        <div class="bg-white shadow-2xl rounded-2xl mb-4">
+        <x-forms.form action="/user/order" method="POST">
+            <div class="bg-white shadow-2xl rounded-2xl mb-4">
                 <div class="md:px-8 px-2 md:pt-8 pt-4 md:pb-6 pb-2">
                     @foreach ($cart as $key => $item)
-                        <x-cart-item :item="$item" :key="$key"/>
+                        <x-cart-item :item="$item" :key="$key" />
+                        <input type="hidden" name="cart[{{$key}}][product_id]" value="{{$item['id']}}">
+                        <input type="hidden" name="cart[{{$key}}][key]" value="{{$key}}">
+                        <input type="hidden" name="cart[{{$key}}][name]" value="{{$item['name']}}">
+                        <input type="hidden" name="cart[{{$key}}][quantity]" value="{{$item['quantity']}}">
+                        <input type="hidden" name="cart[{{$key}}][color]" value="{{$item['color']}}">
+                        <input type="hidden" name="cart[{{$key}}][price]" value="{{$item['price']}}">
+                        <input type="hidden" name="cart[{{$key}}][storage]" value="{{$item['storage']}}">
                     @endforeach
                     <div class="flex justify-between items-center py-4">
                         <p><b>Tạm tính</b> ({{count($cart)}} sản phẩm):</p>
@@ -27,7 +33,7 @@
                     <div class="md:px-8 px-4 py-4 space-y-3">
                         <p class="font-bold text-base">Thông tin khách hàng</p>
                         <div class="flex gap-6">
-                            <x-forms.radio name="gender" id="male" label="Anh" />
+                            <x-forms.radio name="gender" id="male" label="Anh" :checked="true"/>
                             <x-forms.radio name="gender" id="female" label="Chị" />
                         </div>
                         <div class="flex gap-3">
@@ -52,8 +58,8 @@
                         <x-forms.button>Đặt hàng</x-forms.button>
                     </div>
                 </div>
-        
-        </div>
+            </div>
+        </x-forms.form>
         @else
         <div class="flex flex-col items-center lg:py-40 py-20">       
             <img src={{Vite::asset("resources/images/cart.png")}} alt="cart" class="lg:w-52 w-32 lg:h-52 h-32 object-contain">     

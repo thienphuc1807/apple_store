@@ -2,10 +2,7 @@
 <div class="flex md:gap-4 gap-2 py-3 first:border-t-0 border-t-2 border-gray-200">
     <div class="flex flex-col gap-2 justify-center items-center">
         <img src={{Vite::asset('resources/images/iPhone16promax.png')}} alt={{$item['name']}} class="w-24 h-24" />
-        <form action="/removecart/{{$key}}" method="POST">
-            @csrf
-            <button class="text-xs text-old_price bg-gray-100 px-2 py-1">Xoá</button>
-        </form> 
+        <button data-key="{{$key}}" class="delete_btn text-xs text-old_price bg-gray-100 px-2 py-1">Xoá</button>
     </div>
     <div class="flex flex-1 flex-col gap-2">
         <div class="subtotal flex justify-between gap-2">
@@ -29,6 +26,30 @@
 </div>
 <script>
 $(function () {
+
+    $(document).on('click' , '.delete_btn' ,function(){
+        const key = $(this).data("key");
+        deleteItemFromCart(key);
+    })
+
+    function deleteItemFromCart(key){
+        $.ajax({
+            url:`/removecart/${key}`,
+            method: 'POST',
+            data: {
+                _method: 'DELETE',
+                _token: $('meta[name="csrf-token"]').attr('content'),
+            },
+            success: function (response) {
+                location.reload();
+            },  
+            error: function (xhr) {
+                alert(xhr.responseText || 'Failed. Please try again.');
+            }
+        })
+    }
+
+
     $(document).on('click', '.plus', function () {
         const item = $(this).closest('.control');
         const subtotal = item.siblings('.subtotal');
@@ -36,7 +57,7 @@ $(function () {
         const id = item.data('id');
         const quantityInput = item.find('.quantity');
         let quantity = parseInt(quantityInput.val()) + 1;
-        updateCart(id, quantity, quantityInput,subtotal_text);
+        updateCart(id, quantity, quantityInput,  subtotal_text);
     });
 
     $(document).on('click', '.minus', function () {
@@ -46,11 +67,10 @@ $(function () {
         const id = item.data('id');
         const quantityInput = item.find('.quantity');
         let quantity = Math.max(parseInt(quantityInput.val()) - 1, 1);
-        updateCart(id, quantity, quantityInput,subtotal_text);
+        updateCart(id, quantity, quantityInput, subtotal_text);
     });
 
-    function updateCart(id, quantity, quantityInput,subtotal_text) {
-        console.log({ id, quantity }); // Debugging log
+    function updateCart(id, quantity, quantityInput, subtotal_text) {
         $.ajax({
             url: `/updatequantity/${id}`,
             method: 'POST', // Use POST

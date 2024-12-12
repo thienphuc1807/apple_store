@@ -5,7 +5,7 @@
             <div class="w-[50%] lg:block hidden">
                 <img src={{Vite::asset('resources/images/login_image.jpeg')}} alt="login_image" class="w-full">
             </div>
-            <x-forms.form method="POST" action="/user/login" class="flex-1">
+            <x-forms.form method="POST" action="/user/login">
                 <h1 class="text-3xl py-4">Đăng nhập</h1>
                 <div class="pt-3 space-y-4">
                     <x-forms.input label="Tên đăng nhập:" name="username" />

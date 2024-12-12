@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->json('colors')->nullable();
             $table->json('storage')->nullable();
+            $table->integer('stock');
             $table->integer('actual_price');
             $table->integer('old_price');
             $table->foreignIdFor(categories::class);
