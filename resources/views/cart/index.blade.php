@@ -11,7 +11,7 @@
             <a href="/">< Về trang chủ</a>
             <h1 class="md:block hidden">Giỏ hàng của bạn</h1>
         </div>
-        <x-forms.form action="/user/order" method="POST">
+
             <div class="bg-white shadow-2xl rounded-2xl mb-4">
                 <div class="md:px-8 px-2 md:pt-8 pt-4 md:pb-6 pb-2">
                     @foreach ($cart as $key => $item)
@@ -59,7 +59,7 @@
                     </div>
                 </div>
             </div>
-        </x-forms.form>
+
         @else
         <div class="flex flex-col items-center lg:py-40 py-20">       
             <img src={{Vite::asset("resources/images/cart.png")}} alt="cart" class="lg:w-52 w-32 lg:h-52 h-32 object-contain">     

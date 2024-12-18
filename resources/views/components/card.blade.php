@@ -7,12 +7,11 @@
     <div class="my-6">
         <a href="{{$product->slug}}"><img src={{Vite::asset("resources/images/iPhone16promax.png")}} class="mx-auto"></a>
     </div>
-    <h3 class="text-left font-bold text-lg text-apple_text min-h-14">
+    <h3 class="text-left font-bold lg:text-lg text-base text-apple_text pb-4">
         <a href="{{$product->slug}}">{{$product->name}}</a>
     </h3>
-    <div class="flex gap-5 items-center overflow-hidden">
-        <span class="text-actual_price font-bold text-base">{{number_format($product['actual_price'], 0, ',', '.')}}đ</span>
-        <span class="text-old_price text-sm">{{number_format($product->old_price, 0, ',', '.')}}đ</span>
-        <span class="text-old_price text-sm">-2%</span>
+    <div class="flex md:flex-row flex-col gap-2 md:items-baseline items-start jus overflow-hidden">
+        <span class="text-actual_price font-bold lg:text-lg text-base">{{number_format($product['actual_price'], 0, ',', '.')}}đ</span>
+        <span class="text-old_price text-xs line-through">{{number_format($product->old_price, 0, ',', '.')}}đ</span>
     </div>
 </div>

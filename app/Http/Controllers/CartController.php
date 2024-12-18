@@ -40,7 +40,7 @@ class CartController extends Controller
             $cart[$productKey] = $validated; // Add new product
         }
         session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Đã thêm vào giỏ!');
+        return redirect()->back()->with('added', 'Đã thêm vào giỏ!');
     }
 
     public function delete($key)

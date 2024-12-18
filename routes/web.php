@@ -23,7 +23,7 @@ Route::middleware('guest')->group(function () {
 });
 Route::delete('/logout', [LoginUserController::class, 'destroy']);
 
-Route::get('/user/orders', [OrdersController::class, 'index']);
+// Route::get('/user/orders', [OrdersController::class, 'index']);
 Route::post('/user/orders', [OrdersController::class, 'store']);
 
 Route::controller(CartController::class)->group(function () {

@@ -1,21 +1,9 @@
 <style>
-    .slider {
-    width: 100%;
+.slider-wrapper {
     position: relative;
 }
 
-.slides img {
-    width: 100%;
-    display: none;
-}
-
-img.displaySlide {
-    display: block;
-    animation: fade;
-    animation-duration: 1.5s;
-}
-
-.control button {
+.controls button{
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -30,79 +18,52 @@ img.displaySlide {
     opacity: 0.5;
 }
 
-.control button:hover{
+.controls button:hover{
     opacity: 1;
 }
 
-#prev {
-    left: 0px;
+.prev-slide{
+    left: 0;
 }
 
-#next {
-    right: 0px;
+.next-slide{
+    right: 0;
 }
 
-@keyframes fade {
-    from {
-        opacity: 0.5;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
 </style>
 
-<head>
-    <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
-</head>
-
-<div class="slider relative">
-    <div class="slides flex overflow-hidden">
-        <img class="displaySlide" src={{Vite::asset("resources/images/slide1.png")}} alt="slide_img">
+<div class="slider-wrapper">
+    <div class="slider">
+        <img src={{Vite::asset("resources/images/slide1.png")}} alt="slide_img">
         <img src={{Vite::asset("resources/images/slide2.png")}} alt="slide_img">
         <img src={{Vite::asset("resources/images/slide3.png")}} alt="slide_img">
         <img src={{Vite::asset("resources/images/slide4.png")}} alt="slide_img">
         <img src={{Vite::asset("resources/images/slide5.png")}} alt="slide_img">
     </div>
-    <div class="control">
-        <button id="prev" onclick="prevSlide()">&#60;</button>
-        <button id="next" onclick="nextSlide()">&#62;</button>
+    <div class="controls">
+        <button class="prev-slide">&#60;</button>
+        <button class="next-slide">&#62;</button>
     </div>
 </div>
 
 <script>
-    const slides = document.querySelectorAll(".slides img");
-    let slideIndex = 0;
-    let intervalId = null;
-    document.addEventListener("DOMContentLoaded", initializeSlider);
+    $(function() { 
+        $('.slider').slick({
+            dots: true,           
+            infinite: true,         
+            slidesToShow: 1,     
+            slidesToScroll: 1,    
+            autoplay: true,       
+            autoplaySpeed: 2000,
+            arrows: false,
+        });
 
-function initializeSlider() {
-    if (slides.length > 0) {
-        slides[slideIndex].classList.add("displaySlide");
-        intervalId = setInterval(nextSlide, 5000);
-    }
-}
+        $('.prev-slide').on('click', function() {
+            $('.slider').slick('slickPrev'); // Move to the previous slide
+        });
 
-function showSlide(index) {
-    if (index >= slides.length) {
-        slideIndex = 0;
-    } else if (index < 0) {
-        slideIndex = slides.length - 1;
-    }
-    slides.forEach((slide) => slide.classList.remove("displaySlide"));
-    slides[slideIndex].classList.add("displaySlide");
-}
-
-function prevSlide() {
-    slideIndex--;
-    showSlide(slideIndex);
-    clearInterval(intervalId);
-}
-
-function nextSlide() {
-    slideIndex++;
-    showSlide(slideIndex);
-}
+        $('.next-slide').on('click', function() {
+            $('.slider').slick('slickNext'); // Move to the next slide
+        });
+    })
 </script>

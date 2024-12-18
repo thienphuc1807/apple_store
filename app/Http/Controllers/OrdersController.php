@@ -9,11 +9,11 @@ use Illuminate\Http\Request;
 
 class OrdersController extends Controller
 {
-    public function index()
-    {
-        $orders = Orders::all();
-        return view("orders.index", compact("orders"));
-    }
+    // public function index()
+    // {
+    //     $orders = Orders::all();
+    //     return view("orders.index", compact("orders"));
+    // }
 
     public function store(Request $request)
     {
@@ -68,6 +68,8 @@ class OrdersController extends Controller
         }
 
         session()->forget('cart');
-        return view("orders.index");
+        toastr()->success('Đặt hàng thành công');
+
+        return redirect()->back();
     }
 }

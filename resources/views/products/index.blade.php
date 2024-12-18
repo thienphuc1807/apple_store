@@ -9,8 +9,8 @@
             :category="isset($category) ? $category->name : $subcategory->name" 
             :parentCategory="$parentCategory ?? null"
         />
-        <div class="max-w-[1200px] mx-auto">
-            <h1 class="text-center text-[36px] font-bold leading-[54px] pt-4 pb-2">{{isset($category) ? $category['name'] : $subcategory['name']}}</h1>
+        <div class="max-w-[1200px] mx-auto xl:px-0 md:px-6 px-4">
+            <h1 class="text-center md:text-[36px] text-3xl md:font-bold leading-[54px] pt-4 pb-2">{{isset($category) ? $category['name'] : $subcategory['name']}}</h1>
             @if (isset($category))
             <div class="mb-[30px]"><x-slider></x-slider></div>
             <div class="flex justify-between mb-5">
@@ -26,8 +26,6 @@
                      @foreach ($subcategories as $subcategory)
                          <x-category-box :subcategory="$subcategory"/>
                      @endforeach
-                     
- 
                 </div>
                 <div>
                      <a class="text-[#777] border border-solid border-[#EBEBEB] h-[48px] bg-white py-[12px] px-[15px] min-h-[48px] cursor-pointer text-[15px] flex items-center rounded-lg">
@@ -37,7 +35,7 @@
                 </div>
              </div>
             @endif
-        <div class="grid lg:grid-cols-4 grid-cols-3 gap-5">
+        <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 lg:gap-5 gap-3">
             @foreach ($products as $product)   
                 <x-card :product="$product"/>
             @endforeach

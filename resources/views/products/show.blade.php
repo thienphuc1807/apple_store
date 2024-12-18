@@ -55,8 +55,8 @@
                     <input type="hidden" name="color" id="color" value="">
                     <input type="hidden" name="storage" id="storage" value="">
                     <input type="hidden" name="quantity" value="1">
-                    @if(session('success'))
-                        <p class="text-green-500">{{session('success')}}</p>
+                    @if(session('added'))
+                        <p class="text-green-500">{{session('added')}}</p>
                     @endif
                     <button type="submit" class="w-full hover:bg-actual_price bg-white hover:text-white text-actual_price border-2 border-actual_price text-base font-bold h-14 rounded-lg">THÊM VÀO GIỎ</button>
                 </form>

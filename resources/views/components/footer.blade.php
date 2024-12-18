@@ -1,5 +1,5 @@
 <footer class="bg-apple_text">
-    <div class="ld:max-w-[1200px] max-w-[80%] mx-auto xl:px-0 px-5">
+    <div class="lg:max-w-[1200px] mx-auto xl:px-0 md:px-20 px-6">
         <div class="lg:pt-16 pt-10 pb-5 flex lg:flex-row flex-col">
             <div class="lg:w-[30%] w-full">
                 <a href="/">
@@ -15,51 +15,23 @@
                 </div>
             </div>
             <div class="lg:pl-[60px] pl-0 lg:w-[25%] w-full">
-                <div class="text-apple_color mb-[15px]">
-                    Thông tin
+                <div id="information-title" class="lg:hidden flex justify-between text-apple_color py-4 lg:mb-[15px] border-opacity-50 lg:border-b-0 border-b-[1px] border-old_price">
+                    <span class="lg:ml-0 ml-4 text-base">Thông tin</span>
+                    <img src={{Vite::asset("resources/images/icon-footer.png")}} alt="arrow_down" class="w-4 object-contain">
                 </div>
-                <ul class="text-old_price text-[13px] leading-[28px]">
-                    <li>Tin tức</li>
-                    <li>Giới thiệu</li>
-                    <li>Check IMEI</li>
-                    <li>Phương thức thanh toán</li>
-                    <li>Thuê điểm bán lẻ</li>
-                    <li>Bảo hành và sửa chữa</li>
-                    <li>Tuyển dụng</li>
-                    <li>Đánh giá chất lượng, khiếu nại</li>
-                    <li>Tra cứu hoá đơn điện tử</li>
-                </ul>
-            </div>
-            <div class="lg:pl-[60px] pl-0 lg:w-[25%] w-full">
-                <div class="text-apple_color mb-[15px]">
-                    Thông tin
+                <div class="lg:block hidden justify-between text-apple_color py-4 lg:mb-[15px] border-opacity-50 lg:border-b-0 border-b-[1px] border-old_price">
+                    <span class="lg:ml-0 ml-4 text-base">Thông tin</span>
                 </div>
-                <ul class="text-old_price text-[13px] leading-[28px]">
-                    <li>Tin tức</li>
-                    <li>Giới thiệu</li>
-                    <li>Check IMEI</li>
-                    <li>Phương thức thanh toán</li>
-                    <li>Thuê điểm bán lẻ</li>
-                    <li>Bảo hành và sửa chữa</li>
-                    <li>Tuyển dụng</li>
-                    <li>Đánh giá chất lượng, khiếu nại</li>
-                    <li>Tra cứu hoá đơn điện tử</li>
-                </ul>
-            </div>
-            <div class="lg:pl-[60px] pl-0 lg:w-[25%] w-full">
-                <div class="text-apple_color mb-[15px]">
-                    Thông tin
-                </div>
-                <ul class="text-old_price text-[13px] leading-[28px]">
-                    <li>Tin tức</li>
-                    <li>Giới thiệu</li>
-                    <li>Check IMEI</li>
-                    <li>Phương thức thanh toán</li>
-                    <li>Thuê điểm bán lẻ</li>
-                    <li>Bảo hành và sửa chữa</li>
-                    <li>Tuyển dụng</li>
-                    <li>Đánh giá chất lượng, khiếu nại</li>
-                    <li>Tra cứu hoá đơn điện tử</li>
+                <ul id="information-block" class="text-old_price text-[13px] leading-[28px] lg:block hidden">
+                    <li class="lg:ml-0 ml-8 lg:py-0 py-2">Tin tức</li>
+                    <li class="lg:ml-0 ml-8 lg:py-0 py-2">Giới thiệu</li>
+                    <li class="lg:ml-0 ml-8 lg:py-0 py-2">Check IMEI</li>
+                    <li class="lg:ml-0 ml-8 lg:py-0 py-2">Phương thức thanh toán</li>
+                    <li class="lg:ml-0 ml-8 lg:py-0 py-2">Thuê điểm bán lẻ</li>
+                    <li class="lg:ml-0 ml-8 lg:py-0 py-2">Bảo hành và sửa chữa</li>
+                    <li class="lg:ml-0 ml-8 lg:py-0 py-2">Tuyển dụng</li>
+                    <li class="lg:ml-0 ml-8 lg:py-0 py-2">Đánh giá chất lượng, khiếu nại</li>
+                    <li class="lg:ml-0 ml-8 lg:py-0 py-2">Tra cứu hoá đơn điện tử</li>
                 </ul>
             </div>
         </div>
@@ -70,3 +42,11 @@
         </div>
     </div>
 </footer>
+
+<script>
+    $(function(){
+        $("#information-title").click(function(){
+            $("#information-block").slideToggle(1000);
+        })
+    })
+</script>

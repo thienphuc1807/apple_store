@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::share("categories", categories::all());
-        View::share('cart', session()->get('cart', []));
-        Log::info(session()->get('cart'));
+        // View::share('cart', session()->get('cart', []));
+        // Log::info(session()->get('cart'));
     }
 }

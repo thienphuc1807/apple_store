@@ -1,25 +1,9 @@
-<div>
+<div class="bg-white lg:hidden block">
     <ul class="flex flex-wrap justify-around">
+        @foreach ($categories as $category)       
         <li>
-            <a href="" class="inline-block py-3 px-1">iPhone</a>
+            <a href="/{{$category->slug}}" class="inline-block py-3 px-1">{{$category->name}}</a>
         </li>
-        <li>
-            <a href="" class="inline-block py-3 px-1">iPad</a>
-        </li>
-        <li>
-            <a href="" class="inline-block py-3 px-1">Mac</a>
-        </li>
-        <li>
-            <a href="" class="inline-block py-3 px-1">Watch</a>
-        </li>
-        <li>
-            <a href="" class="inline-block py-3 px-1">Âm thanh</a>
-        </li>
-        <li>
-            <a href="" class="inline-block py-3 px-1">Phụ kiện</a>
-        </li>
-        <li>
-            <a href="" class="inline-block py-3 px-1">Máy cũ</a>
-        </li>
+        @endforeach
     </ul>
 </div>
