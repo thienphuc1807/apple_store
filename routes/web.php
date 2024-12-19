@@ -15,6 +15,7 @@ Route::get('/', function () {
 });
 
 Route::get('/{slug}', [ProductsUserController::class, 'index']);
+
 Route::middleware('guest')->group(function () {
     Route::get('/user/register', [RegisterUserController::class, 'create']);
     Route::post('/user/register', [RegisterUserController::class, 'store']);

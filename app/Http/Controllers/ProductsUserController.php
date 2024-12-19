@@ -46,12 +46,16 @@ class ProductsUserController extends Controller
         } elseif ($productDetails) {
             $parentCategory = categories::find($productDetails->categories_id);
             $subcategory = subcategories::find($productDetails->subcategories_id);
+            $relatedProducts = products::where('subcategories_id', $productDetails->subcategories_id)
+                ->where('id', '!=', $productDetails->id)
+                ->get();
             return view(
                 'products.show',
                 [
                     'productDetails' => $productDetails,
                     'parentCategory' => $parentCategory,
                     'subcategory' => $subcategory,
+                    'relatedProducts' => $relatedProducts
                 ]
             );
         }
