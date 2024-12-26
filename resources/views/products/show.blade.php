@@ -9,10 +9,10 @@
     :subcategory="$subcategory ?? null"
     />
     <div class="bg-white">
-        <div class="mx-auto max-w-[1200px] space-y-6 lg:px-0 px-5">
+        <div class="mx-auto max-w-[1200px] space-y-6 xl:px-0 px-5">
             <div class="flex lg:flex-row flex-col gap-10 border-b-2">
                 <div class="flex-1 aspect-square flex justify-center items-center bg-white rounded-2xl">
-                    <div class="w-[70%]">
+                    <div class="w-[60%]">
                         <img src={{Vite::asset('resources/images/iPhone16promax.png')}} class="w-full h-full object-contain" alt={{$productDetails->name}}>
                     </div>     
                 </div>
@@ -63,7 +63,7 @@
             </div>
             <div>
                 <div class="border-b-2">
-                    <p class="font-bold text-lg border-t-2 border-r-2 border-l-2 border-b-2 border-b-white rounded-t-md mb-[-2px] inline-block p-2">Sản phẩm tương tự</p>
+                    <p class="font-bold text-lg border-t-2 border-r-2 border-l-2 border-b-2 border-b-white rounded-t-md md:mb-[-2px] mb-[-1px] inline-block p-2">Sản phẩm tương tự</p>
                 </div>
                 <div class="flex mt-2">
                     @foreach ($relatedProducts as $product)

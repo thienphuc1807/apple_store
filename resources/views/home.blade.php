@@ -7,7 +7,7 @@
                 @endforeach
             </div>
             <div class="mt-20">
-                <a href="">
+                <a href="/">
                     <img src={{Vite::asset("resources/images/banner_home.jpeg")}} alt="banner_home" class="object-contain mx-auto w-fit">
                 </a>
             </div>

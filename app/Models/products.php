@@ -11,11 +11,11 @@ class products extends Model
     use HasFactory;
     public function categories()
     {
-        return $this->belongsTo(categories::class);
+        return $this->belongsTo(categories::class, 'categories_id');
     }
-    public function sub_categories()
+    public function subCategories()
     {
-        return $this->belongsTo(subcategories::class);
+        return $this->belongsTo(subcategories::class, 'subcategories_id');
     }
 
     public function orderItems()

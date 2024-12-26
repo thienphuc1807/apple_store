@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LoginUserController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ProductsUserController;
@@ -14,6 +16,20 @@ Route::get('/', function () {
     return view('home', ['categories' => $categories]);
 });
 
+// Admin
+Route::controller(AdminController::class)->group(function () {
+    Route::get('/admin',  'dashboard');
+    Route::get('/admin/products',  'products');
+    Route::get('/admin/products/{id}/edit',  'editProduct');
+    Route::put('/admin/products/{id}',  'update');
+    Route::delete('/admin/products/{id}',  'destroy');
+    Route::get('/admin/products/create', 'create');
+    Route::post('/admin/products/create', 'store');
+});
+
+Route::get('/admin/categories/{category}/subcategories', [CategoryController::class, 'getSubcategories']);
+
+// User Products pages
 Route::get('/{slug}', [ProductsUserController::class, 'index']);
 
 Route::middleware('guest')->group(function () {
