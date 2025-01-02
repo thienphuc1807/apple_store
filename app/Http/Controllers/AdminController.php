@@ -80,7 +80,7 @@ class AdminController extends Controller
             'slug' => ['required', 'alpha_dash'],
             'old_price' => ['numeric'],
             'actual_price' => ['numeric'],
-            'stock' => ['required', 'numeric'],
+            'stock' => ['required'],
             'category' => ['required'],
             'sub_category' => ['required'],
         ], [
@@ -92,6 +92,7 @@ class AdminController extends Controller
             'actual_price.numeric' => 'Giá khuyến mãi phải là số',
             'category.required' => 'Vui lòng chọn danh mục',
             'sub_category.required' => 'Vui lòng chọn danh mục con',
+            'stock.required' => 'Vui lòng nhập số lượng sản phẩm',
         ]);
         $product = new products();
         $product->name = $request->name;
@@ -101,8 +102,14 @@ class AdminController extends Controller
         $product->actual_price = $request->actual_price;
         $product->categories_id = $request->category;
         $product->subcategories_id = $request->sub_category;
-        $product->save();
-        return redirect('/admin/products');
+
+        if ($product->save()) {
+            flash()->flash('success', 'Đã thêm sản phẩm mới.', [], 'Thành công');
+            return redirect('/admin/products');
+        } else {
+            flash()->error('Đã xảy ra lỗi.');
+            return redirect()->back();
+        }
     }
 
     /**

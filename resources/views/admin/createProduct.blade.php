@@ -4,28 +4,28 @@
         @csrf
         <div class="flex flex-col mt-3">
             <label for="name" class="text-lg font-semibold">Tên sản phẩm</label>
-            <input type="text" name="name" id="name" class="border border-gray-300 rounded-md p-1">
+            <input type="text" name="name" value="{{old("name")}}" id="name" class="border border-gray-300 rounded-md p-1">
             @error('name')
                 <div class="text-red-500">{{$message}}</div>
             @enderror
         </div>
         <div class="flex flex-col mt-3">
             <label for="old_price" class="text-lg font-semibold">Giá gốc</label>
-            <input type="text" name="old_price" id="old_price" class="border border-gray-300 rounded-md p-1">
+            <input type="text" name="old_price" value="{{old("old_price")}}" id="old_price" class="border border-gray-300 rounded-md p-1">
             @error('old_price')
                 <div class="text-red-500">{{$message}}</div>
             @enderror
         </div>
         <div class="flex flex-col mt-3">
             <label for="actual_price" class="text-lg font-semibold">Giá khuyến mãi</label>
-            <input type="text" name="actual_price" id="actual_price" class="border border-gray-300 rounded-md p-1">
+            <input type="text" name="actual_price" value="{{old("actual_price")}}" id="actual_price" class="border border-gray-300 rounded-md p-1">
             @error('actual_price')
                 <div class="text-red-500">{{$message}}</div>
             @enderror   
         </div>
         <div class="flex flex-col mt-3">
             <label for="stock" class="text-lg font-semibold">Số lượng</label>
-            <input type="number" name="stock" id="stock" class="border border-gray-300 rounded-md p-1">
+            <input type="number" name="stock" value="{{old("stock")}}" id="stock" class="border border-gray-300 rounded-md p-1">
             @error('stock')
                 <div class="text-red-500">{{$message}}</div>
             @enderror   
@@ -35,7 +35,7 @@
             <select name="category" id="category" class="border border-gray-300 rounded-md p-1">
                 <option value="" selected>Chọn danh mục</option>
                 @foreach($categories as $category)
-                <option value="{{$category->id}}">{{$category->name}}</option>
+                    <option value="{{$category->id}}">{{$category->name}}</option>
                 @endforeach
             </select>
             @error('category')

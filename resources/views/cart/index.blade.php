@@ -7,12 +7,12 @@
     </style>
     <div class="md:max-w-[600px] w-full mx-auto min-h-screen">
         @if (!empty($cart) && count($cart) > 0)
-        <div class="flex py-2 md:px-0 px-4 justify-between">
-            <a href="/">< Về trang chủ</a>
-            <h1 class="md:block hidden">Giỏ hàng của bạn</h1>
-        </div>
-
-            <div class="bg-white shadow-2xl rounded-2xl mb-4">
+            <div class="flex py-2 md:px-0 px-4 justify-between">
+                <a href="/">< Về trang chủ</a>
+                <h1 class="md:block hidden">Giỏ hàng của bạn</h1>
+            </div>
+            <form action="/user/orders" method="POST" class="bg-white shadow-2xl rounded-2xl mb-4">
+                @csrf
                 <div class="md:px-8 px-2 md:pt-8 pt-4 md:pb-6 pb-2">
                     @foreach ($cart as $key => $item)
                         <x-cart-item :item="$item" :key="$key" />
@@ -58,13 +58,12 @@
                         <x-forms.button>Đặt hàng</x-forms.button>
                     </div>
                 </div>
-            </div>
-
+            </form>
         @else
-        <div class="flex flex-col items-center lg:py-40 py-20">       
-            <img src={{Vite::asset("resources/images/cart.png")}} alt="cart" class="lg:w-52 w-32 lg:h-52 h-32 object-contain">     
-            <p>Giỏ hàng của bạn chưa có sản phẩm nào.</p>
-        </div>
+            <div class="flex flex-col items-center lg:py-40 py-20">       
+                <img src={{Vite::asset("resources/images/cart.png")}} alt="cart" class="lg:w-52 w-32 lg:h-52 h-32 object-contain">     
+                <p>Giỏ hàng của bạn chưa có sản phẩm nào.</p>
+            </div>
         @endif
     </div>
 </x-layout>

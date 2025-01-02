@@ -26,12 +26,12 @@
                 <td class="border border-gray-300 pl-2">{{$product->stock}}</td>
                 <td class="border border-gray-300 pl-2">{{$product->categories->name}}</td>
                 <td class="border border-gray-300 pl-2">{{optional($product->subCategories)->name}}</td>
-                <td class="border border-gray-300 pl-2">
+                <td class="border border-gray-300 pl-2 flex gap-2">
                     <a href="/admin/products/{{$product->id}}/edit" class="bg-apple_backgroundColor text-white px-3 py-1 rounded"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <form action="/admin/products/{{$product->id}}" method="POST" class="inline">
+                    <form id="delete-form-{{$product->id}}" action="/admin/products/{{$product->id}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded"><i class="fa-solid fa-trash"></i></button>
+                        <button onclick="confirmDelete('delete-form-{{$product->id}}')" class="bg-red-500 text-white px-3 py-1 rounded"><i class="fa-solid fa-trash"></i></button>
                     </form>
                 </td>
             </tr>
@@ -43,4 +43,23 @@
     @elseif(session('error'))
         <p class="text-red-500">{{session('error')}}</p>
     @endif
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmDelete(formId) {
+            Swal.fire({
+                title: 'Bạn có chắc chắn?',
+                text: "Bạn sẽ không thể hoàn tác hành động này!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Vâng, xóa nó!',
+                cancelButtonText: 'Hủy bỏ'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById(formId).submit();
+                }
+            })
+        }
+    </script>
 </x-adminlayout>

@@ -18,7 +18,7 @@ Route::get('/', function () {
 
 // Admin
 Route::controller(AdminController::class)->group(function () {
-    Route::get('/admin',  'dashboard');
+    Route::get('/admin', 'dashboard');
     Route::get('/admin/products',  'products');
     Route::get('/admin/products/{id}/edit',  'editProduct');
     Route::put('/admin/products/{id}',  'update');
